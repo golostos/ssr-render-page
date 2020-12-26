@@ -1,0 +1,31 @@
+{
+  "name": "ssr-render-page",
+  "version": "0.1.0",
+  "description": "Simple SSR render based on JSDOM",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/golostos/ssr-render-page.git"
+  },
+  "keywords": [
+    "SSR",
+    "render"
+  ],
+  "author": "Alexander Dmitriev",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/golostos/ssr-render-page/issues"
+  },
+  "homepage": "https://github.com/golostos/ssr-render-page#readme",
+  "dependencies": {
+    "jsdom": "^16.4.0",
+    "node-fetch": "^2.6.1"
+  },
+  "devDependencies": {
+    "chokidar": "^3.4.3",
+    "ws": "^7.4.1"
+  }
+}
