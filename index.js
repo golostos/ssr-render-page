@@ -30,7 +30,7 @@ function configSSRPage(serverUrl, resourceName, htmlFile, development = true) {
     async function renderPage(pathname = '/') {
         const renderEmitter = new MyEmitter()
         const finishRender = promisify(renderEmitter.once.bind(renderEmitter))
-        const readFile = promisify(fs.readFile)
+        
         const dom = await JSDOM.fromFile(htmlFile, {
             runScripts: "dangerously",
             resources: "usable",
@@ -50,6 +50,7 @@ function configSSRPage(serverUrl, resourceName, htmlFile, development = true) {
         })
 
         if (development) {
+            const readFile = promisify(fs.readFile)
             const wsInject = (await readFile(path.join(__dirname, 'wb-inject.js'), 'utf8')).replace('__PORT__', wsPort.toString())
             dom.window.document.body.insertAdjacentHTML('beforeend', `<script>${wsInject}</script>`)
         }
