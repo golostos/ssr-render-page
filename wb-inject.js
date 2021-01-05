@@ -1,14 +1,16 @@
 if ('WebSocket' in window) {
     function startSocket() {        
-        var socket = new WebSocket('ws://localhost:__PORT__');
+        var socket = new WebSocket('ws://localhost:__PORT__/__RESOURCE_NAME__');
+        socket.onopen = function () {
+            console.log('Live reload enabled.');
+        };
         socket.onclose = function () {
             console.log('Socket closed')
             startSocket()
         };
         socket.onmessage = function (msg) {
             if (msg.data == 'reload') window.location.reload();            
-        };
-        console.log('Live reload enabled.');
+        };        
     }
     startSocket();
 }

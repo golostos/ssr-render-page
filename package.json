@@ -1,11 +1,8 @@
 {
   "name": "ssr-render-page",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Simple SSR render based on JSDOM",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/golostos/ssr-render-page.git"
@@ -22,9 +19,7 @@
   "homepage": "https://github.com/golostos/ssr-render-page#readme",
   "dependencies": {
     "jsdom": "^16.4.0",
-    "node-fetch": "^2.6.1"
-  },
-  "devDependencies": {
+    "node-fetch": "^2.6.1",
     "chokidar": "^3.4.3",
     "ws": "^7.4.1"
   }
