@@ -26,6 +26,7 @@ function SSRResourceConstructor({ origin, resourceName, htmlFile, development = 
 
     let wsPort = 0
 
+    if (development) wsInit(htmlFile, resourceName, server).then((port) => wsPort = port).catch(console.error)
 
     /**
      * @typedef {Object} RenderedPage
