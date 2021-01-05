@@ -11,7 +11,9 @@ declare function SSRResourceConstructor(options: {
     /** Check to enable live reload SSR page while developing */
     development?: boolean; 
     /** The NodeJS server to link to Live reload system */
-    server?: Object
+    server?: Object;
+    /** Maximum time to wait before stopping page rendering */
+    waitingTime?: number
 }): (pathname: string) => Promise<{
     /** The rendered html page */
     html: string;
@@ -42,7 +44,9 @@ declare namespace SSRResourceConstructor {
         /** Check to enable live reload SSR page while developing */
         development?: boolean; 
         /** The NodeJS server to link to Live reload system */
-        server?: Object
+        server?: Object;
+        /** Maximum time to wait before stopping page rendering */
+        waitingTime?: number
     }
     
     declare type RenderedPage = {

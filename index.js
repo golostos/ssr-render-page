@@ -14,8 +14,9 @@ const path = require('path')
  * @param {string} config.htmlFile Path to the html file for SSR
  * @param {boolean} [config.development] Check to enable live reload SSR page while developing
  * @param {Object} [config.server] The NodeJS server to link to Live reload system 
+ * @param {Object} [config.waitingTime] Maximum time to wait before stopping page rendering
  */
-function SSRResourceConstructor({ origin, resourceName, htmlFile, development = true, server }) {
+function SSRResourceConstructor({ origin, resourceName, htmlFile, development = true, server, waitingTime = 8000 }) {
 
     function getPageUrl(pathname = '/', prefix = '') {
         if (pathname.startsWith('/')) pathname = pathname.slice(1)
@@ -71,7 +72,14 @@ function SSRResourceConstructor({ origin, resourceName, htmlFile, development = 
             dom.window.document.body.insertAdjacentHTML('beforeend', `<script>${wsInject}</script>`)
         }
 
-        await finishRender('finish')
+        const wait = new Promise((resolve, reject) => {
+            setTimeout(() => {
+                resolve('Maybe you forgot to run window.finishRender() in your browser\'s JavaScript after your rendering is complete. Or SSR is very slow.')
+            }, waitingTime);
+        })
+
+        const result = await Promise.race([wait, finishRender('finish')])
+        if (result && typeof result === 'string') return { html: result, statusCode: 500 }
         return { html: dom.serialize(), statusCode: dom.window.statusCode }
     }
 

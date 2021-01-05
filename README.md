@@ -11,11 +11,18 @@ Installation:
 ```js
 const SSRResourceConstructor = require('ssr-render-page')
 const configSSRResource = { 
+    // Server's origin host name
     origin: 'http://localhost:3000', 
+    // Pathname for the root of the SSR page
     resourceName: '/resource/name', 
-    htmlFile: 'path/to/index.html',
-    server, // Optional: NodeJS' Http server object. Using for live-reloading if development flag is true
-    development: true // Optional (default = true): Enable live-reloading of your SSR page
+    // Path to the html file for SSR
+    htmlFile: 'path/to/index.html', 
+    // Optional: NodeJS' Http server object. Using for live-reloading if development flag is true
+    server, 
+    // Optional (default = true): Enable live-reloading of your SSR page
+    development: true,
+    // Optional (default = 8000 ms): Maximum time to wait before stopping page rendering
+    waitingTime: 8000 
 }
 const renderResource = SSRResourceConstructor(configSSRPage)
 
