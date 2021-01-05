@@ -21,13 +21,11 @@ function SSRResourceConstructor({ origin, resourceName, htmlFile, development = 
         if (pathname.startsWith('/')) pathname = pathname.slice(1)
         if (prefix.startsWith('/')) prefix = prefix.slice(1)
         const url = new URL(`${prefix}/${pathname}`, origin).href;
-        console.log(url)
         return url;
     }
 
     let wsPort = 0
 
-    if (development) wsInit(htmlFile, resourceName, server).then((port) => wsPort = port).catch(console.error)
 
     /**
      * @typedef {Object} RenderedPage

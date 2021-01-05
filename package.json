@@ -1,6 +1,6 @@
 {
   "name": "ssr-render-page",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Simple SSR render based on JSDOM",
   "main": "index.js",
   "repository": {
